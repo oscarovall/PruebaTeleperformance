@@ -45,6 +45,8 @@ export class HomeComponent implements OnInit {
     .subscribe(
       res =>{
         console.log("res",res)
+        this.registerForm.reset()
+        this.getExtras();
       },
       err=> {
         console.log("Error", err)
@@ -56,7 +58,7 @@ export class HomeComponent implements OnInit {
     .subscribe(
       res =>{
         this.extrasList = res;
-        console.log("res",res)
+        console.log("res",res)        
       },
       err=> {
         console.log("Error", err)
@@ -69,6 +71,7 @@ export class HomeComponent implements OnInit {
     .subscribe(
       res =>{        
         console.log("res",res)
+        this.getExtras();
       },
       err=> {
         console.log("Error", err)
