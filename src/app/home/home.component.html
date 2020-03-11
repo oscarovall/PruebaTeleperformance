@@ -1,0 +1,199 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>APP Prueba</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+
+    <h1>Registro de horas extra</h1>    
+    <form class="example-form" [formGroup]="registerForm" (submit)="saveExtras();">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Motivo</mat-label>
+                    <input matInput type="text" name="motivo" formControlName="motivo">
+                    <mat-error *ngIf="registerForm.controls.motivo.hasError('required')">
+                        Motivo es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Numero de Documento</mat-label>
+                    <input matInput type="number" name="documento" formControlName="documento" maxlength="10">
+                    <mat-error *ngIf="registerForm.controls.documento.hasError('required')">
+                        Numero de documento es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nombres</mat-label>
+                    <input matInput type="text" name="nombres" formControlName="nombres">
+                    <mat-error *ngIf="registerForm.controls.nombres.hasError('required')">
+                        Nombres es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Apellidos</mat-label>
+                    <input matInput type="text" name="apellidos" formControlName="apellidos">
+                    <mat-error *ngIf="registerForm.controls.apellidos.hasError('required')">
+                        Apellidos es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Fecha de Inicio</mat-label>
+                    <input matInput [matDatepicker]="picker1" name="fechaInicio" formControlName="fechaInicio">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-error *ngIf="registerForm.controls.nombres.hasError('required')">
+                        Fecha de inicio es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Fecha de Fin</mat-label>
+                    <input matInput [matDatepicker]="picker" name="fechaFin" formControlName="fechaFin">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="registerForm.controls.nombres.hasError('required')">
+                        Fecha de fin es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Horario inicio de turno</mat-label>
+                    <input matInput type="datetime-local" name="inicioTurno" formControlName="inicioTurno">
+                    <mat-error *ngIf="registerForm.controls.inicioTurno.hasError('required')">
+                        Horario inicio de curso es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Horario fin de turno</mat-label>
+                    <input matInput type="datetime-local" name="finTurno" formControlName="finTurno">
+                    <mat-error *ngIf="registerForm.controls.finTurno.hasError('required')">
+                        Horario fin de turno <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Horario Inicio hora extra</mat-label>
+                    <input matInput type="datetime-local" name="inicioHoraExtra" formControlName="inicioHoraExtra">
+                    <mat-error *ngIf="registerForm.controls.inicioHoraExtra.hasError('required')">
+                        Horario Inicio de hora extra es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4 col-xs-12 div-input">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Horario Fin hora extra</mat-label>
+                    <input matInput type="datetime-local" name="finHoraExtra" formControlName="finHoraExtra">
+                    <mat-error *ngIf="registerForm.controls.finHoraExtra.hasError('required')">
+                        Horario fin de hora extra es <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 buttons">
+                <button mat-raised-button color="primary" type="submit"
+                    [disabled]="!registerForm.valid">Guardar</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+    <h1>Lista de horas extra</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Motivo</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Inicio turno</th>
+                <th>Fin turno</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of extrasList; index as i ">
+                <td class="center">{{ item.documento }}</td>
+                <td class="center">{{ item.nombres }}</td>
+                <td class="center">{{ item.apellidos }}</td>
+                <td class="center">{{ item.motivo}}</td>
+                <td class="center">{{ item.fechaInicio | date}}</td>
+                <td class="center">{{ item.fechaFin | date}}</td>
+                <td class="center">{{ item.inicioTurno | date:'medium'}}</td>
+                <td class="center">{{ item.finTurno | date:'medium'}}</td>
+
+                <td class="center">
+                    <button mat-mini-fab aria-label="Eliminar" (click)="deleteExtra(item.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<br>
+
+
+
+<div class="container">
+    <h1>Lista de datos desde JsonPlaceHolder</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>Id</th>
+                <th>title</th>
+                <th>completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of placeHolderList; index as i ">
+                <td class="center">{{ item.userId }}</td>
+                <td class="center">{{ item.id }}</td>
+                <td >{{ item.title }}</td>
+                <td class="center">{{ item.completed}}</td>                
+            </tr>
+        </tbody>
+    </table>
+</div>
